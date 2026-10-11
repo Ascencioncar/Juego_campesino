@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd4n6psy8l7je"]
+
+[ext_resource type="Resource" path="res://data/crops/arroz.tres" id="crop_arroz"]
+[ext_resource type="Resource" path="res://data/crops/arvejas.tres" id="crop_arvejas"]
+[ext_resource type="Script" uid="uid://c43hovtetxshb" path="res://scenes/finca/finca.gd" id="finca"]
+[ext_resource type="Script" uid="uid://b1rf14lr8umd6" path="res://scenes/finca/hud.gd" id="hud"]
+[ext_resource type="PackedScene" path="res://entities/parcela/parcela.tscn" id="parcela"]
+[ext_resource type="PackedScene" uid="uid://foecaq3l27hv" path="res://entities/player/player.tscn" id="player"]
+
+[sub_resource type="RectangleShape2D" id="house"]
+size = Vector2(120, 90)
+
+[node name="Finca" type="Node2D"]
+script = ExtResource("finca")
+
+[node name="Ground" type="Polygon2D" parent="."]
+color = Color(0.5, 0.7, 0.35, 1)
+polygon = PackedVector2Array(-600, -400, 600, -400, 600, 400, -600, 400)
+
+[node name="Path" type="Polygon2D" parent="."]
+color = Color(0.72, 0.6, 0.42, 1)
+polygon = PackedVector2Array(-50, -400, 50, -400, 50, 400, -50, 400)
+
+[node name="House" type="StaticBody2D" parent="."]
+position = Vector2(-280, -160)
+
+[node name="HouseBody" type="Polygon2D" parent="House"]
+color = Color(0.7, 0.4, 0.3, 1)
+polygon = PackedVector2Array(-60, -45, 60, -45, 60, 45, -60, 45)
+
+[node name="Roof" type="Polygon2D" parent="House"]
+color = Color(0.5, 0.25, 0.2, 1)
+polygon = PackedVector2Array(-72, -45, 72, -45, 0, -92)
+
+[node name="HouseShape" type="CollisionShape2D" parent="House"]
+shape = SubResource("house")
+
+[node name="Parcelas" type="Node2D" parent="."]
+
+[node name="ParcelaArroz1" parent="Parcelas" instance=ExtResource("parcela")]
+position = Vector2(130, -40)
+crop = ExtResource("crop_arroz")
+
+[node name="ParcelaArroz2" parent="Parcelas" instance=ExtResource("parcela")]
+position = Vector2(210, -40)
+crop = ExtResource("crop_arroz")
+
+[node name="ParcelaArvejas1" parent="Parcelas" instance=ExtResource("parcela")]
+position = Vector2(170, 70)
+crop = ExtResource("crop_arvejas")
+
+[node name="Player" parent="." instance=ExtResource("player")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("hud")
+
+[node name="MoneyLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 240.0
+offset_bottom = 40.0
+text = "Dinero: $0"
+
+[node name="NotifyLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 700.0
+offset_bottom = 72.0

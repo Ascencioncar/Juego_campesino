@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CropData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://data/crop_data.gd" id="1"]
+[ext_resource type="Resource" path="res://data/items/semilla_arroz.tres" id="2"]
+[ext_resource type="Resource" path="res://data/items/arroz.tres" id="3"]
+
+[resource]
+script = ExtResource("1")
+id = &"arroz"
+display_name = "Arroz"
+seed_item = ExtResource("2")
+product_item = ExtResource("3")
+grow_time = 6.0
+stages = 3
+yield_amount = 3

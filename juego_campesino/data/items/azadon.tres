@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"azadon"
+display_name = "Azadon"
+description = "Herramienta para trabajar la tierra."
+category = 2
+buy_price = 8000
+sell_price = 1000
+max_stack = 5
+stackable = true

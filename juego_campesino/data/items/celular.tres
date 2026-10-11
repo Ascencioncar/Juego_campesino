@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"celular"
+display_name = "Celular"
+description = "Un celular para acceder a mapas, viajes y logros."
+category = 3
+buy_price = 30000
+sell_price = 0
+max_stack = 1
+stackable = false

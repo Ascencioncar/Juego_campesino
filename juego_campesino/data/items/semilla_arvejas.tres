@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"semilla_arvejas"
+display_name = "Semilla de arvejas"
+description = "Semilla para sembrar arvejas en una parcela preparada."
+category = 0
+buy_price = 1500
+sell_price = 400
+max_stack = 99
+stackable = true

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"arroz"
+display_name = "Arroz"
+description = "Arroz cosechado. Se puede vender en la tienda."
+category = 1
+buy_price = 0
+sell_price = 3000
+max_stack = 99
+stackable = true

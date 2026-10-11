@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/item_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = &"semilla_arroz"
+display_name = "Semilla de arroz"
+description = "Semilla para sembrar arroz en una parcela preparada."
+category = 0
+buy_price = 2000
+sell_price = 500
+max_stack = 99
+stackable = true

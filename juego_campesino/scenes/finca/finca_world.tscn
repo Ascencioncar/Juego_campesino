@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnt5fd3f5gdnv"]
+
+[ext_resource type="PackedScene" path="res://entities/tienda/tienda.tscn" id="6_k3rnr"]
+[ext_resource type="Resource" path="res://data/crops/arroz.tres" id="crop_arroz"]
+[ext_resource type="Resource" path="res://data/crops/arvejas.tres" id="crop_arvejas"]
+[ext_resource type="Script" uid="uid://c43hovtetxshb" path="res://scenes/finca/finca.gd" id="finca"]
+[ext_resource type="PackedScene" path="res://entities/parcela/parcela.tscn" id="parcela"]
+[ext_resource type="PackedScene" uid="uid://foecaq3l27hv" path="res://entities/player/player.tscn" id="player"]
+
+[sub_resource type="RectangleShape2D" id="floor"]
+size = Vector2(2000, 320)
+
+[sub_resource type="RectangleShape2D" id="wall"]
+size = Vector2(40, 900)
+
+[node name="Finca" type="Node2D"]
+script = ExtResource("finca")
+
+[node name="Sky" type="Polygon2D" parent="."]
+color = Color(0.6, 0.8, 0.95, 1)
+polygon = PackedVector2Array(-1000, -500, 1000, -500, 1000, 310, -1000, 310)
+
+[node name="Cloud1" type="Polygon2D" parent="."]
+position = Vector2(-300, -200)
+color = Color(1, 1, 1, 0.9)
+polygon = PackedVector2Array(-60, 0, -20, -25, 25, -22, 60, 0, 20, 15, -25, 15)
+
+[node name="Cloud2" type="Polygon2D" parent="."]
+position = Vector2(360, -280)
+color = Color(1, 1, 1, 0.85)
+polygon = PackedVector2Array(-50, 0, -15, -20, 20, -18, 50, 0, 15, 12, -20, 12)
+
+[node name="Sol" type="Polygon2D" parent="."]
+position = Vector2(540, -330)
+color = Color(1, 0.92, 0.5, 1)
+polygon = PackedVector2Array(-28, 0, -20, -20, 0, -28, 20, -20, 28, 0, 20, 20, 0, 28, -20, 20)
+
+[node name="Suelo" type="StaticBody2D" parent="."]
+
+[node name="Grass" type="Polygon2D" parent="Suelo"]
+color = Color(0.45, 0.7, 0.33, 1)
+polygon = PackedVector2Array(-1000, 300, 1000, 300, 1000, 332, -1000, 332)
+
+[node name="Dirt" type="Polygon2D" parent="Suelo"]
+color = Color(0.45, 0.33, 0.22, 1)
+polygon = PackedVector2Array(-1000, 332, 1000, 332, 1000, 620, -1000, 620)
+
+[node name="FloorShape" type="CollisionShape2D" parent="Suelo"]
+position = Vector2(0, 460)
+shape = SubResource("floor")
+
+[node name="Limites" type="StaticBody2D" parent="."]
+
+[node name="WallL" type="CollisionShape2D" parent="Limites"]
+position = Vector2(-840, 0)
+shape = SubResource("wall")
+
+[node name="WallR" type="CollisionShape2D" parent="Limites"]
+position = Vector2(840, 0)
+shape = SubResource("wall")
+
+[node name="Casa" type="Node2D" parent="."]
+position = Vector2(-560, 300)
+
+[node name="CasaBody" type="Polygon2D" parent="Casa"]
+color = Color(0.72, 0.45, 0.32, 1)
+polygon = PackedVector2Array(-75, 0, 75, 0, 75, -115, -75, -115)
+
+[node name="Techo" type="Polygon2D" parent="Casa"]
+color = Color(0.5, 0.28, 0.22, 1)
+polygon = PackedVector2Array(-90, -115, 90, -115, 0, -180)
+
+[node name="Puerta" type="Polygon2D" parent="Casa"]
+color = Color(0.3, 0.2, 0.15, 1)
+polygon = PackedVector2Array(-20, 0, 20, 0, 20, -62, -20, -62)
+
+[node name="Parcelas" type="Node2D" parent="."]
+
+[node name="ParcelaArroz1" parent="Parcelas" instance=ExtResource("parcela")]
+position = Vector2(-120, 300)
+crop = ExtResource("crop_arroz")
+
+[node name="ParcelaArroz2" parent="Parcelas" instance=ExtResource("parcela")]
+position = Vector2(40, 300)
+crop = ExtResource("crop_arroz")
+
+[node name="ParcelaArvejas1" parent="Parcelas" instance=ExtResource("parcela")]
+position = Vector2(200, 300)
+crop = ExtResource("crop_arvejas")
+
+[node name="Player" parent="." instance=ExtResource("player")]
+position = Vector2(-360, 150)
+
+[node name="Tienda" parent="." instance=ExtResource("6_k3rnr")]
+position = Vector2(-250, 300)
